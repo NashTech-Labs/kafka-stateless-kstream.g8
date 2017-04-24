@@ -1,9 +1,9 @@
-#Kafka Stateless Stream Processing
+# Kafka Stateless Stream Processing
 
 This is an activator project showcasing stateless stream processing using Kafka KStream by fetching all the hashTags in your tweets.
 
 ---
-###Steps to Install and Run Zookeeper and Kafka on your system :
+### Steps to install Zookeeper and Apache Kafka:
 
 Step 1: Download Kafka
 
@@ -14,16 +14,15 @@ Step 2: Extract downloaded file
 ```bash
 tar -xzvf kafka_2.11-0.10.1.1.tgz
 cd kafka_2.11-0.10.1.1
-```        
-    
-Step 3: Start Servers
+```
+### Steps to start Zookeeper and Kafka server :
 
 Start Zookeeper:
 
 ```bash
 bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
-    
+
 Start Kafka server:
 
 ```bash
@@ -32,7 +31,7 @@ bin/kafka-server-start.sh config/server.properties
 
 
 ---
-###Clone Project
+### Clone Project
 
 ```bash
 git clone git@github.com:knoldus/activator-stateful-kstream-kafka.git
@@ -40,7 +39,12 @@ cd activator-kstream-kafka
 bin/activator clean compile
 ```
 ---
-###Start producing tweets from your twitter account into a kafka topic
+### Start producing tweets from your twitter account into a kafka topic
+
+Step 1: Add your twitter authentication tokens in application.conf.
+
+Step 2:
+Execute the following command,
 
 ```bash
 bin/activator "run-main com.knoldus.demo.TweetProducer"
@@ -48,15 +52,18 @@ bin/activator "run-main com.knoldus.demo.TweetProducer"
 This starts fetching tweets and push each of it into a Kafka topic queue.
 
 ---
-###Start processing these tweets using,
+### Start processing these tweets using,
+
+Step 1:
+Execute the following command,
 
 ```bash
 bin/activator "run-main com.knoldus.demo.KStreamDemo"
 ```
-    
-This starts stream processing on your tweets kafka topic.
 
-###Start consuming the hash Tags in each tweet,
+This begins stream processing on the kafka topic which contains your tweets.
+
+### Start consuming all the hash Tags in each tweet,
 
 ```bash
 bin/activator "run-main com.knoldus.demo.ConsumerDemo"
